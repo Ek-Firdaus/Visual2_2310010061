@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem
 from PyQt5.uic import loadUi
 import mysql.connector as mc
 
-class MainWindow(QMainWindow):
+class MahasiswaForm(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
         try:
@@ -19,7 +19,11 @@ class MainWindow(QMainWindow):
         self.BATAL.clicked.connect(self.batalForm)
         self.tableWidget.cellClicked.connect(self.tampilDataKlik)
 
-        self.loadData()
+        # self.loadData()
+        try:
+            self.loadData()
+        except Exception as e:
+            print("Gagal load data awal:", e)
 
     def koneksi(self):
         return mc.connect(
